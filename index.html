@@ -1,0 +1,35 @@
+<%
+if(isDebug){
+	baseUrl = "${server}src/"
+}else{
+	baseUrl = "${server}build/"
+}
+%>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="${baseUrl}xcProject/theme/css/theme.css">
+	<script type="text/javascript">
+		dojoConfig = {
+			async: true,
+			paths: {
+				"dijit": "../dijit",
+				"dojox": "../dojox",
+				"excentos": "../../excentos",
+				"xcProject": "../../../xcProject"
+			},
+			deps: ["xcProject/${applicationName}"]
+		};
+		<%
+		if(isDebug){
+			%>
+			dojoConfig.isDebug = true;
+			<%
+		}
+		%>
+	</script>
+	<script type="text/javascript" src="${baseUrl}core/dojotoolkit/dojo/dojo.js" charset="UTF-8"></script>
+</head>
+<body>
+	<div id="xc_application"></div>
+</body>
+</html>
